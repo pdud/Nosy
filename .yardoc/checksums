@@ -1,4 +1,0 @@
-lib/nosy.rb 55da9b373c46026c78263209a35dead36ddea617
-lib/nosy/parser.rb a835836fa43c4324e955c51ce9f61c6ef0e52df7
-lib/nosy/hunter.rb 9798584fd5f73db77814ddaf11d29a919707a293
-lib/nosy/searcher.rb 39d1cb4628027198dbbfe4b2e1ec4770b148cdc2
