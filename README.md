@@ -1,5 +1,6 @@
 # Nosy
-###### Output, backup, and read all your iPhone text messages.
+
+**Output, backup, and read all your iPhone text messages.**
 
 Nosy extracts text messages from the native iOS (iPhone, iPad) database stored on your computer automatically after each backup and organizes it into an array of easily explorable messages.
 
