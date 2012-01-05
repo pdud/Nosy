@@ -2,56 +2,25 @@
 
 **Output, backup, and read all your iPhone text messages.**
 
-Nosy extracts text messages from the native iOS (iPhone, iPad) database stored on your computer automatically after each backup and organizes it into an array of easily explorable messages.
+Nosy extracts text messages from the native iOS (iPhone, iPad) database stored on your computer after each backup and organizes it into an array of easily explorable messages.
 
-Nosy returns an array of messages with the fields receiver, sender, message, imessage, and date. The date field contains a unix timestamp for the message.
+Nosy returns an array of messages with the fields
+	
+* receiver
+* sender
+* message
+* imessage (Boolean)
+* date (contains a unix timestamp)
 
 
 ## Install
 
 	$ gem install nosy
 
-Or add Nosy to your Gemfile and run bundle install.
-
-
-## Finding
-If you are on a Mac OSX system, Nosy can try to grab your SMS database. It will return a String with the location of the iPhone SMS database.
-
-	require 'nosy'
-	
-	new_text_backup_file_location = Nosy.hunt
-
-If you have multiple phone's it will grab the first parseable file.
-
-### Location
-The location of the folder storing the iPhone backups in Mac OSX is
-
-	$ ~/Library/Application Support/MobileSync/Backup/
-
-Each of the folders will represent an Apple device. Within your desired device the SMS database will be the file with the title `3d0d7e5fb2ce288813306e4d4636395e047a3d28`
-
-
-## Parsing 
-
-Nosy can detect if a file can be parsed as an iPhone database.
-	
-	valid = Nosy.can_parse?(iphone_database_location)
-
-Nosy can also parse the file, returning an array of all available text messages.
-
-	all_texts = Nosy.parse(iphone_database_location)
-
-	all_texts.each do |text|
-		text.receiver
-		text.sender 
-		text.message
-		text.imessage
-		text.date
-	end
+Or add Nosy to your Gemfile and run `bundle install`.
 
 ## Find and Parse
-
-Nosy also includes a convenience method that combines finding and parsing.
+If you are on a Mac OSX system, Nosy (is nosy, and) will try to grab your iOS message database and parse it.
 
 	all_texts = Nosy.hunt_and_parse
 
@@ -63,10 +32,45 @@ Nosy also includes a convenience method that combines finding and parsing.
 		text.date
 	end
 
+
+## Location
+The location of the folder storing the iOS message backups in Mac OSX is
+
+	$ ~/Library/Application Support/MobileSync/Backup/
+
+Each of the folders will represent an Apple device. Within your desired device's folder, the iOS message database will be the file entitled `3d0d7e5fb2ce288813306e4d4636395e047a3d28`
+
+
+### Hunt
+
+If you are on Mac OSX running Nosy.hunt will return a String with the location of the first parseable iOS message database if there is one.
+
+	require 'nosy'
+	
+	new_text_backup_file_location = Nosy.hunt
+
+
+## Parsing 
+
+If you pass in an iOS message database, Nosy can detect if a file can be parsed as an iPhone database.
+	
+	valid = Nosy.can_parse?(iphone_database_location)
+
+Also, Nosy can parse the file and return an array of all available text messages.
+
+	all_texts = Nosy.parse(iphone_database_location)
+
+	all_texts.each do |text|
+		text.receiver
+		text.sender 
+		text.message
+		text.imessage
+		text.date
+	end
+
 ## Searching
 
-
-Nosy can search through the texts in your iPhone SMS database. Nosy searching supports any combination of the following keys:
+Nosy can search through the texts in your iOS message database. Nosy searching supports any combination of the following keys:
 	
 * receiver
 * sender
@@ -92,11 +96,13 @@ Contributions, improvements, and suggestions more than welcome! Please!
 
 ### Some Ideas
 
-* Nosy currently does not properly handle MMS (group and media) messages. 
-* Nosy currently does not let you search for two values in one key
-* Nosy currently does not let you hunt for the SMS database on other systems than Mac OSX
-* Nosy currently does not support creating a backup file.
-* Nosy currently does not run on Heroku due to it's dependency on Sqlite3.
+Currently, Nosy is yet to...
+
+* Properly handle MMS (group and media) messages.
+* Let you search for two values in one key.
+* Let you hunt for the iOS message database on systems other than Mac OSX.
+* Support creating a backup file.
+* Run on Heroku due to its dependency on Sqlite3.
 
 ## Acknowledgment
 
