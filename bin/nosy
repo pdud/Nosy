@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'nosy'
+
+if ARGV[0] == nil
+  p Nosy.hunt_parse_and_output
+elsif ["html","json","csv"].include?(ARGV[0])
+  p Nosy.hunt_parse_and_output(ARGV[0], ARGV[1] == "true" ? true : false)
+elsif ["hunt","find","locate"].include?(ARGV[0])
+  p Nosy.hunt
+else
+  p Nosy.hunt_parse_and_output
+end
