@@ -14,7 +14,7 @@ Nosy returns an array of messages with the fields
 
 which can then be outputted to
 
-* a html file (default)
+* [a html file (default)](http://pdud.github.com/Nosy/)
 * a json string
 * a json document
 * a csv documents
